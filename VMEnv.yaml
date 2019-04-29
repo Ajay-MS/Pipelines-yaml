@@ -6,7 +6,7 @@ jobs:
     pool: Hosted
     environment: ajyaenvironment1
     strategy:
-        runonce:
+        runOnce:
           deploy:
             steps:
               - script: echo Hello, world! $(p1Arg) $(p3Arg) $(hello)
