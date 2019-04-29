@@ -3,10 +3,10 @@ jobs:
     variables:
       p1Arg: 'FirstArgument'
       p3Arg: 'Third Argument'
-    pool: default
-    environment: Env1.RG1
+    pool: Hosted
+    environment: ajyaenvironment1
     strategy:
-        rolling:
+        runonce:
           deploy:
             steps:
               - script: echo Hello, world! $(p1Arg) $(p3Arg) $(hello)
