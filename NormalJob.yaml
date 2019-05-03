@@ -1,0 +1,10 @@
+jobs:
+  - job: job1
+    variables:
+      p1Arg: 'FirstArgument'
+      p3Arg: 'Third Argument'
+      poolName: 'default'
+    pool: $(poolName)
+    steps:
+      - script: echo Hello, world! $(p1Arg) $(p3Arg) $(hello)
+        displayName: 'Run a one-line script'
