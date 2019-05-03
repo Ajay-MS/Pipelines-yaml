@@ -9,5 +9,9 @@ jobs:
         runOnce:
           deploy:
             steps:
-              - script: echo Hello, world! $(p1Arg) $(p3Arg) $(hello)
-                displayName: 'Run a one-line script'
+              - task: AzureCLI@1
+                inputs:
+                  azureSubscription: 'ajya_spn'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: 'Write-output "hello"'
+                  displayName: 'Run a one-line script'
