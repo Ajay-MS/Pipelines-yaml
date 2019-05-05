@@ -21,4 +21,4 @@ jobs:
                     TaskType: 'sqlInline'
                     InlineSql: 'select * from sys.tables'
                     DatabaseName: 'testdb'
-                    displayName: 'Run SQL task on machine group '
+                    displayName: 'Run SQL task on machine group  '
