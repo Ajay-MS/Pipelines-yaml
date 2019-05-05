@@ -1,0 +1,18 @@
+jobs:
+  - deployment: job1
+    variables:
+      p1Arg: 'FirstArgument'
+      p3Arg: 'Third Argument'
+    pool: Hosted
+    environment: ajyaenvironment1
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: AzurePowerShell@3
+                inputs:
+                  azureSubscription: 'ajya_spn'
+                  ScriptType: 'InlineScript'
+                  Inline: 'Write-output "hello"'
+                  TargetAzurePs: 'LatestVersion'
+                  displayName: 'Run a one-line script'
