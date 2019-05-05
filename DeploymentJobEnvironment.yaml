@@ -6,7 +6,7 @@ jobs:
     pool: Hosted
     environment: ajyaenvironment1.VMRG
     strategy:
-        runOnce:
+        rolling:
           deploy:
             steps:
               - task: AzurePowerShell@3
