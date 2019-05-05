@@ -1,0 +1,24 @@
+jobs:
+  - deployment: job1
+    variables:
+      p1Arg: 'FirstArgument'
+      p3Arg: 'Third Argument'
+    pool: Hosted
+    environment: ajyaenvironment1.VMRG
+    strategy:
+        rolling:
+          deploy:
+            steps:
+              - task: AzurePowerShell@3
+                inputs:
+                  azureSubscription: 'ajya_spn'
+                  ScriptType: 'InlineScript'
+                  Inline: 'Write-output "hello"'
+                  TargetAzurePs: 'LatestVersion'
+                  displayName: 'Run a one-line script'
+              - task: SqlDacpacDeploymentOnMachineGroup@0
+                inputs:
+                    TaskType: 'sqlInline'
+                    InlineSql: 'select * from sys.tables'
+                    DatabaseName: 'testdb'
+                    displayName: 'Run SQL task on machine group'
