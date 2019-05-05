@@ -9,9 +9,10 @@ jobs:
         runOnce:
           deploy:
             steps:
-              - task: AzureCLI@1
+              - task: AzurePowerShell@3
                 inputs:
                   azureSubscription: 'ajya_spn'
-                  scriptLocation: 'inlineScript'
-                  inlineScript: 'Write-output "hello"'
+                  ScriptType: 'InlineScript'
+                  Inline: 'Write-output "hello"'
+                  TargetAzurePs: 'LatestVersion'
                   displayName: 'Run a one-line script'
