@@ -4,7 +4,7 @@ jobs:
       p1Arg: 'FirstArgument'
       p3Arg: 'Third Argument'
     pool: Hosted
-    environment: ajyaenvironment1
+    environment: ajyaenvironment1.VMRG
     strategy:
         runOnce:
           deploy:
