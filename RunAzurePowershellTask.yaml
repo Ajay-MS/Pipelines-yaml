@@ -4,7 +4,7 @@ jobs:
       p1Arg: 'FirstArgument'
       p3Arg: 'Third Argument'
     pool: default
-    environment: ajyaEnv1.VMRG
+    environment: ajyaEnv1.VMRG1
     strategy:
         rolling:
           deploy:
