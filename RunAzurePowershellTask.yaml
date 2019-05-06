@@ -16,9 +16,3 @@ jobs:
                   Inline: 'Write-output "hello"'
                   TargetAzurePs: 'LatestVersion'
                   displayName: 'Run a one-line script'
-              - task: SqlDacpacDeploymentOnMachineGroup@0
-                inputs:
-                    TaskType: 'sqlInline'
-                    InlineSql: 'select * from sys.tables'
-                    DatabaseName: 'testdb'
-                    displayName: 'Run SQL task on machine group '
