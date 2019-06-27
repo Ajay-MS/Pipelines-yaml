@@ -6,7 +6,7 @@ jobs:
     pool: Hosted
     environment: ajyaenvironment1
     strategy:
-        rolling:
+        runOnce:
           deploy:
             steps:
               - task: AzurePowerShell@3
