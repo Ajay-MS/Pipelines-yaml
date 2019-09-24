@@ -1,39 +1,43 @@
-name: $(BuildDefinitionName)_$(SourceBranchName)_$(date:yyyyMMdd)$(rev:.r)
-
-trigger:
-  branches:
-    include:
-    - '*'
+name: Ajay
 
 variables:
   BuildPlatform: 'any cpu'
   BuildConfiguration: 'release'
 
 stages:
-- stage: provision_to_feature_env
+- stage: stage_1
   displayName: 'Stage 1 - Provision resources to feature environment'
   jobs:
-  - job: Job1
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: echo execute job1 on stage 1
-      displayName: 'Feature environment provisioning'
-- stage: after_provision
-  displayName: 'Stage 2 - Executing second stage'
+  - deployment: Job1
+    pool: 'default'
+    environment: env1
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            - script: echo execute job1 on stage 1
+              displayName: 'Feature environment provisioning'
+- stage: stage_2
+  displayName: 'Stage 2 demo'
   jobs:
-  - job: Job2
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: echo exeucte job2 on stage2 
-      displayName: 'Execute job2 on stage2'
-- stage: last_stage
-  displayName: 'Stage 3 - Execution'
+  - deployment: Job2
+    pool: 'default'
+    environment: env1
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            - script: echo execute job2 on stage 2
+              displayName: 'Job1 on stage1 demo'
+- stage: stage_3
+  displayName: 'Stage 3 thunder'
   jobs:
-  - job: Job
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: echo execute job3 on stage 3 wow
-      displayName: 'Execute job3 on stage 3 '
+  - deployment: Job3
+    pool: 'default'
+    environment: env1
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo execute job3 on stage 3
+                displayName: 'Thunder and lightening job'
