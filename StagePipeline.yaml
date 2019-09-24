@@ -1,0 +1,39 @@
+name: $(BuildDefinitionName)_$(SourceBranchName)_$(date:yyyyMMdd)$(rev:.r)
+
+trigger:
+  branches:
+    include:
+    - '*'
+
+variables:
+  BuildPlatform: 'any cpu'
+  BuildConfiguration: 'release'
+
+stages:
+- stage: provision_to_feature_env
+  displayName: 'Stage 1 - Provision resources to feature environment'
+  jobs:
+  - job: Job1
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo execute job1 on stage 1
+      displayName: 'Feature environment provisioning'
+- stage: after_provision
+  displayName: 'Stage 2 - Executing second stage'
+  jobs:
+  - job: Job2
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo exeucte job2 on stage2 
+      displayName: 'Execute job2 on stage2'
+- stage: last_stage
+  displayName: 'Stage 3 - Execution'
+  jobs:
+  - job: Job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo execute job3 on stage 3 wow
+      displayName: 'Execute job3 on stage 3 '
