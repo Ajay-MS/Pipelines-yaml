@@ -28,7 +28,16 @@ stages:
           deploy:
             steps:
             - script: echo execute job2 on stage 2
-              displayName: 'Job1 on stage1 demo'
+              displayName: 'Job2 on stage2 demo'
+  - deployment: Job4
+    pool: 'default'
+    environment: env1
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            - script: echo execute job4 on stage 2
+              displayName: 'Job4 on stage2 demo'
 - stage: stage_3
   displayName: 'Stage 3 thunder'
   jobs:
